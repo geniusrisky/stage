@@ -21,7 +21,7 @@ router.post("/update-show", TvShowController.updateShow);
 
 router.post("/create-movie", MovieController.createMovie);
 router.delete("/delete-movie/:id", MovieController.deleteMovie);
-router.post("/update-movie", MovieController.updateMovie);
+router.get("/update-movie", MovieController.updateMovie);
 
 
 // functionalities
