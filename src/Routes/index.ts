@@ -21,12 +21,12 @@ router.post("/update-show", TvShowController.updateShow);
 
 router.post("/create-movie", MovieController.createMovie);
 router.delete("/delete-movie/:id", MovieController.deleteMovie);
-router.get("/update-movie", MovieController.updateMovie);
+router.post("/update-movie", MovieController.updateMovie);
 
 
 // functionalities
 router.post("/user/add-to-my-list", [internalAuth],  UserActionController.addToMyList);
-router.post("/user/fetch-list", [internalAuth], UserActionController.fetchListForUser);
+router.get("/user/fetch-list", [internalAuth], UserActionController.fetchListForUser);
 router.post("/user/remove-content-from-list", [internalAuth], UserActionController.removeContentFromList);
 
 export default router;
