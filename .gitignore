@@ -1,0 +1,7 @@
+# dependencies
+/node_modules
+.env
+./build
+error.log
+combined.log
+package-lock.json
