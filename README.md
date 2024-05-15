@@ -36,23 +36,23 @@ The primary objective of the project is to provide users with a user-friendly pl
 
 ## Functional Requirements:
 
-    Add to My List: Users can add a movie or TV show to their list. Each item is identified by a unique ID, ensuring there are no duplicates in the user's list.
+  Add to My List: Users can add a movie or TV show to their list. Each item is identified by a unique ID, ensuring there are no duplicates in the user's list.
 
-    Remove from My List: Users can remove an item from their list using the item's unique ID.
+  Remove from My List: Users can remove an item from their list using the item's unique ID.
 
-    List My Items: Users can retrieve all items in their list. The response is paginated to efficiently handle potentially large lists.
+  List My Items: Users can retrieve all items in their list. The response is paginated to efficiently handle potentially large lists.
 
 ## Non-Functional Requirements:
 
-    Performance: The "List My Items" feature is crucial and should respond in under 10 milliseconds to provide a seamless user experience.
+  Performance: The "List My Items" feature is crucial and should respond in under 10 milliseconds to provide a seamless user experience.
 
 ## Implementation Details:
 
 To meet the non-functional requirement of performance, caching mechanisms are employed. Initially, querying the database for the user's list would exceed the 10ms threshold. Hence, Redis caching is utilized.
 
-    Caching Mechanism: Each time a user requests their list, the application checks Redis for a cached copy. If the data is present and within the cache's expiration period, it's fetched from Redis, ensuring a quick response time. However, if the data is not found in Redis or has expired, the application retrieves the updated list from the database.
+  Caching Mechanism: Each time a user requests their list, the application checks Redis for a cached copy. If the data is present and within the cache's expiration period, it's fetched from Redis, ensuring a quick response time. However, if the data is not found in Redis or has expired, the application retrieves the updated list from the database.
 
-    Updating Redis: When a user adds or removes content from their list, the corresponding Redis key for that user's list is deleted. This ensures that the next time the user requests their list, it's fetched directly from the updated database, reflecting the changes made.
+  Updating Redis: When a user adds or removes content from their list, the corresponding Redis key for that user's list is deleted. This ensures that the next time the user requests their list, it's fetched directly from the updated database, reflecting the changes made.
 
 By employing this caching strategy and actively managing Redis keys, the application ensures both data consistency and high performance, meeting the stringent non-functional requirement of responding within 10 milliseconds for the "List My Items" feature
 
