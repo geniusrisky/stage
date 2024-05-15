@@ -1,6 +1,5 @@
 # Build myList Feature #Nodejs #Typescript
 
-Sample Nodejs API with Typescript and Mongodb
 
 ## Script:
 
